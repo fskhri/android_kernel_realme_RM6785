@@ -7,8 +7,8 @@ source ~/.bashrc && source ~/.profile
 export LC_ALL=C && export USE_CCACHE=1
 ccache -M 100G
 export ARCH=arm64
-export KBUILD_BUILD_HOST=neolit
-export KBUILD_BUILD_USER="sarthakroy2002"
+export KBUILD_BUILD_HOST=YorForger
+export KBUILD_BUILD_USER="RootAchan"
 if [ ! -d "clang" ]; then
 	wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master/clang-r487747.tar.gz -O "aosp-clang.tar.gz"
 	mkdir clang && tar -xf aosp-clang.tar.gz -C clang && rm -rf aosp-clang.tar.gz
@@ -40,12 +40,11 @@ make -j$(nproc --all) O=out \
 
 function zupload()
 {
-git clone --depth=1 https://github.com/sarthakroy2002/AnyKernel3.git -b RMX2001 AnyKernel
+git clone --depth=1 https://github.com/fskhri/AnyKernel3.git AnyKernel
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
 cd AnyKernel
-zip -r9 Test-OSS-KERNEL-wasabi-NEOLIT.zip *
-curl -sL https://git.io/file-transfer | sh
-./transfer wet Test-OSS-KERNEL-wasabi-NEOLIT.zip
+zip -r9 coba.zip *
+curl --upload-file "coba.zip" https://free.keep.sh
 }
 
 compile
